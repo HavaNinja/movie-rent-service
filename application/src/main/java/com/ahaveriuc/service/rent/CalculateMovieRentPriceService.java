@@ -52,7 +52,7 @@ public class CalculateMovieRentPriceService implements CalculateMovieRentPriceUs
 
         List<RentPricingCalculationDetail> rentPricingCalculationDetails = rentalDetails.rentCalculationDetails().stream().map(detail -> {
                     long rentalDays = ChronoUnit.DAYS.between(detail.rentStartDate().startDate(), detail.rentExpectedEndDate().endDate());
-                    Movie.Type movieType = movies.get(detail.movieId()).get(0).getType();
+                    Movie.Type movieType = movies.get(detail.movieId()).getFirst().getType();
                     Money price = rentCalculationStrategies.get(movieType).calculatePrice(rentalDays);
 
                     return new RentPricingCalculationDetail(detail.movieId(), new RentBasePrice(price), new RentDuration(rentalDays));
@@ -61,7 +61,7 @@ public class CalculateMovieRentPriceService implements CalculateMovieRentPriceUs
 
         // Suppose that all prices are in the same currency
         BigDecimal totalPrice = rentPricingCalculationDetails.stream().map(detail -> detail.totalCost().price().amount()).reduce(BigDecimal.ZERO, BigDecimal::add);
-        Currency currency = rentPricingCalculationDetails.get(0).totalCost().price().currency();
+        Currency currency = rentPricingCalculationDetails.getFirst().totalCost().price().currency();
 
         return new RentPricingCalculationResult(rentPricingCalculationDetails, new Money(totalPrice, currency));
     }

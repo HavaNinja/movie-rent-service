@@ -14,6 +14,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <flyway-core.version>9.22.3</flyway-core.version>
     </properties>
 
     <dependencies>
@@ -25,6 +26,28 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ahaveriuc</groupId>
+            <artifactId>domain</artifactId>
+            <version>${sha1}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ahaveriuc</groupId>
+            <artifactId>application</artifactId>
+            <version>${sha1}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.playtika.testcontainers</groupId>
+            <artifactId>embedded-postgresql</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
