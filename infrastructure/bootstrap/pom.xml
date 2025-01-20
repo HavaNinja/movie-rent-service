@@ -5,6 +5,7 @@
         <groupId>com.ahaveriuc</groupId>
         <artifactId>movie-rent-service</artifactId>
         <version>${sha1}</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>bootstrap</artifactId>

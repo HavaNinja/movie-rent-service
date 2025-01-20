@@ -5,13 +5,12 @@
         <groupId>com.ahaveriuc</groupId>
         <artifactId>movie-rent-service</artifactId>
         <version>${sha1}</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>web</artifactId>
     <packaging>jar</packaging>
-
     <name>web</name>
-    <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
