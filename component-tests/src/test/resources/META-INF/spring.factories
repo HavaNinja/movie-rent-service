@@ -1,2 +1,2 @@
 org.springframework.boot.SpringApplicationRunListener=\
-com.ahaveriuc.ImageBuildTestExecutionListener
+com.ahaveriuc.componenttests.ImageBuildTestExecutionListener
