@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="loggingFormat" source="logging.format" defaultValue="PLAIN"/>
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="json-appender.xml" />
+    <include resource="plain-appender.xml" />
+
+    <root level="info">
+        <appender-ref ref="${loggingFormat}" />
+    </root>
+</configuration>

@@ -21,5 +21,3 @@ management:
       base-path: /
   server:
     port: 8081
-
-logging.config: "classpath:logback.xml"
