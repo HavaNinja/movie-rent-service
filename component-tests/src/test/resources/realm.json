@@ -1,0 +1,43 @@
+[
+  {
+    "realm": "service",
+    "enabled": true,
+    "clients": [
+      {
+        "clientId": "service",
+        "bearerOnly": false,
+        "publicClient": false,
+        "secret": "secret",
+        "standardFlowEnabled": false,
+        "serviceAccountsEnabled": true,
+        "attributes": {
+          "access.token.lifespan": "3600"
+        },
+        "fullScopeAllowed": false,
+        "defaultClientScopes": [
+          "service"
+        ]
+      }
+    ],
+    "clientScopes": [
+      {
+        "name": "service",
+        "protocol": "openid-connect",
+        "attributes": {
+          "include.in.token.scope": "true"
+        },
+        "protocolMappers": [
+          {
+            "name": "audience",
+            "protocol": "openid-connect",
+            "protocolMapper": "oidc-audience-mapper",
+            "config": {
+              "included.client.audience": "movie-rental-store",
+              "access.token.claim": "true"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
