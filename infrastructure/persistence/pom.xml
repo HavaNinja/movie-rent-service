@@ -12,11 +12,6 @@
     <packaging>jar</packaging>
     <name>persistence</name>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <flyway-core.version>9.22.3</flyway-core.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

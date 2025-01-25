@@ -1,16 +1,25 @@
 spring:
-  application.name: movie-rent-service
+  application:
+    name: movie-rent-service
   datasource:
     url: jdbc:postgresql://${POSTGRESQL_HOST}:${POSTGRESQL_PORT}/${VIDEO_RENT_STORE_DB}
     username: ${POSTGRESQL_USER}
     password: ${POSTGRESQL_PASSWORD}
   flyway:
     schemas: rental
-    create-schemas: ${CREATE_SCHEMAS:false}
+    create-schemas: ${FLYWAY_CREATE_SCHEMAS:false}
     user: ${POSTGRESQL_USER}
     password: ${POSTGRESQL_PASSWORD}
     validateMigrationNaming: true
   jpa:
     open-in-view: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, heapdump, threaddump, loggers
+      base-path: /
+  server:
+    port: 8081
 
 logging.config: "classpath:logback.xml"
