@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration
 @EntityScan(basePackages = "com.ahaveriuc")
 @EnableJpaRepositories(basePackages = "com.ahaveriuc")
-public class PersistenceTestConfig {
+class PersistenceTestConfig {
 }

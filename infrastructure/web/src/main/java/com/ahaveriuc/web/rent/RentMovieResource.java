@@ -29,13 +29,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/rent")
 @RequiredArgsConstructor
-public class RentMovieResource {
+class RentMovieResource {
 
     private final CalculateMovieRentPriceUseCase calculateMovieRentPriceUseCase;
     private final CalculateRentReturnPriceUseCase calculateRentReturnPriceUseCase;
 
     @PostMapping("/calculation")
-    public ResponseEntity<MovieRentCalculationResponse> calculateRentPrice(@RequestBody MovieRentCalculationRequest requestBody) {
+    ResponseEntity<MovieRentCalculationResponse> calculateRentPrice(@RequestBody MovieRentCalculationRequest requestBody) {
         List<RentCalculationDetail> rentCalculationDetails = requestBody.getRentCalculationRequestDetails()
                 .stream()
                 .map(requestDetail -> new RentCalculationDetail(new MovieId(requestDetail.getMovieId()), new RentStartDate(requestDetail.getRentStartDate()), new RentExpectedEndDate(requestDetail.getRentEndDate())))
@@ -49,7 +49,7 @@ public class RentMovieResource {
     }
 
     @PostMapping("/return")
-    public ResponseEntity<MovieRentReturnResponse> returnMovies(@RequestBody MovieRentReturnRequest requestBody) {
+    ResponseEntity<MovieRentReturnResponse> returnMovies(@RequestBody MovieRentReturnRequest requestBody) {
         List<RentReturnDetail> rentCalculationDetails = requestBody.getRentReturnRequestDetails()
                 .stream()
                 .map(requestDetail -> new RentReturnDetail(new MovieId(requestDetail.getMovieId()),
@@ -66,7 +66,7 @@ public class RentMovieResource {
         return ResponseEntity.ok(responseBody);
     }
 
-    private MovieRentReturnResponse mapToMovieRentReturnPricingResponse(RentReturnPricingResult rentReturnPricingResult) {
+    MovieRentReturnResponse mapToMovieRentReturnPricingResponse(RentReturnPricingResult rentReturnPricingResult) {
         List<MovieRentReturnResponse.MovieRentReturnResponseDetail> rentReturnResponseDetail = rentReturnPricingResult.returnPricingDetail()
                 .stream()
                 .map(MovieRentReturnResponse.MovieRentReturnResponseDetail::valueOf)
@@ -83,7 +83,7 @@ public class RentMovieResource {
         return responseBody;
     }
 
-    private static MovieRentCalculationResponse mapToMovieRentCalculationResponse(RentPricingCalculationResult rentPricingCalculationResult) {
+    static MovieRentCalculationResponse mapToMovieRentCalculationResponse(RentPricingCalculationResult rentPricingCalculationResult) {
         List<MovieRentCalculationResponse.MovieRentCalculationDetail> rentCalculationResponseDetail = rentPricingCalculationResult.pricingCalculationDetail()
                 .stream()
                 .map(MovieRentCalculationResponse.MovieRentCalculationDetail::valueOf)

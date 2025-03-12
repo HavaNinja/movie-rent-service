@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class ImageBuildTestExecutionListener implements SpringApplicationRunListener {
+class ImageBuildTestExecutionListener implements SpringApplicationRunListener {
 
     private final boolean buildImage;
 

@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("embedded.service")
 @Getter
 @Setter
-public class ServiceProperties extends CommonContainerProperties {
+class ServiceProperties extends CommonContainerProperties {
     private String dockerImage;
     protected String defaultDockerImage;
     private Integer port = 8080;

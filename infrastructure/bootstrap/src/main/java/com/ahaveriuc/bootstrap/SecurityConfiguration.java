@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @PropertySource("classpath:security-oauth2-server.properties")
-public class SecurityConfiguration {
+class SecurityConfiguration {
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity httpSecurity, OAuth2ResourceServerExtProperties properties) throws Exception {
@@ -38,7 +38,7 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public JwtDecoder jwtDecoder(OAuth2ResourceServerExtProperties properties) {
+    JwtDecoder jwtDecoder(OAuth2ResourceServerExtProperties properties) {
         return JwtDecoders.fromIssuerLocation(properties.getJwt().getIssuerUri());
     }
 
@@ -48,7 +48,7 @@ public class SecurityConfiguration {
     }
 
     @ConfigurationProperties(prefix = "spring.security.oauth2.resourceserver")
-    public static class OAuth2ResourceServerExtProperties extends OAuth2ResourceServerProperties {
+    static class OAuth2ResourceServerExtProperties extends OAuth2ResourceServerProperties {
         private final JwtExt jwt = new JwtExt();
 
         public JwtExt getJwt() {

@@ -23,13 +23,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/catalog/movie")
 @RequiredArgsConstructor
-public class MovieCatalogResource {
+class MovieCatalogResource {
 
     private final AddMovieToStoreUseCase addMovieToStoreUseCase;
     private final ReadAllMoviesUseCase readAllMoviesUseCase;
 
     @PostMapping
-    public ResponseEntity<Void> addMovieToCatalog(@RequestBody AddMovieToCatalogRequest requestBody) {
+    ResponseEntity<Void> addMovieToCatalog(@RequestBody AddMovieToCatalogRequest requestBody) {
 
         AddMovieToCatalogContext addMovieToCatalogContext = new AddMovieToCatalogContext(Movie.Type.valueOf(requestBody.getType()), new MovieName(requestBody.getName()));
         MovieId newMovieId = addMovieToStoreUseCase.execute(addMovieToCatalogContext);
@@ -40,7 +40,7 @@ public class MovieCatalogResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<ReadMovieResponse>> readAllMovies() {
+    ResponseEntity<List<ReadMovieResponse>> readAllMovies() {
 
         List<ReadMovieResponse> responseBody = readAllMoviesUseCase.execute()
                 .stream().

@@ -23,15 +23,16 @@ import java.util.stream.Collectors;
 @EntityScan(basePackages = "com.ahaveriuc")
 @EnableJpaRepositories(basePackages = "com.ahaveriuc")
 @ComponentScan(basePackages = "com.ahaveriuc", includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {DomainService.class})})
-public class ApplicationConfiguration {
+class ApplicationConfiguration {
+
     @Bean
-    public CalculateMovieRentPriceService calculateMovieRentPriceService(ReadMoviePort readMoviePort, List<RentCalculationStrategy> rentCalculationStrategies) {
+    CalculateMovieRentPriceService calculateMovieRentPriceService(ReadMoviePort readMoviePort, List<RentCalculationStrategy> rentCalculationStrategies) {
         Map<Movie.Type, RentCalculationStrategy> strategyMap = rentCalculationStrategies.stream().collect(Collectors.toMap(RentCalculationStrategy::getType, Function.identity()));
         return new CalculateMovieRentPriceService(readMoviePort, strategyMap);
     }
 
     @Bean
-    public CalculateRentReturnPriceService calculateRentReturnPriceService(ReadMoviePort readMoviePort, List<RentCalculationStrategy> rentCalculationStrategies, List<PenaltyCalculationStrategy> penaltyCalculationStrategies) {
+    CalculateRentReturnPriceService calculateRentReturnPriceService(ReadMoviePort readMoviePort, List<RentCalculationStrategy> rentCalculationStrategies, List<PenaltyCalculationStrategy> penaltyCalculationStrategies) {
         Map<Movie.Type, RentCalculationStrategy> rentCalculationStrategyMap = rentCalculationStrategies.stream().collect(Collectors.toMap(RentCalculationStrategy::getType, Function.identity()));
         Map<Movie.Type, PenaltyCalculationStrategy> penaltyCalculationStrategyMap = penaltyCalculationStrategies.stream().collect(Collectors.toMap(PenaltyCalculationStrategy::getType, Function.identity()));
 

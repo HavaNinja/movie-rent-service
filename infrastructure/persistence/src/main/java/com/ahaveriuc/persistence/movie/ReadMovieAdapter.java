@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @Component
 @Transactional(readOnly = true)
-public class ReadMovieAdapter implements ReadMoviePort {
+class ReadMovieAdapter implements ReadMoviePort {
 
     private final MovieJpaRepository movieJpaRepository;
 

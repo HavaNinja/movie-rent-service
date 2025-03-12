@@ -30,7 +30,7 @@ import org.springframework.security.oauth2.core.OAuth2AccessToken;
         matchIfMissing = true
 )
 @DependsOn("service")
-public class ComponentTestConfig {
+class ComponentTestConfig {
 
     @Value("${embedded.service.host}")
     String host;
@@ -79,7 +79,7 @@ public class ComponentTestConfig {
     }
 
     @Bean
-    public ClientRegistration clientRegistration() {
+    ClientRegistration clientRegistration() {
         return ClientRegistration.withRegistrationId("service")
                 .clientId("service")
                 .clientSecret("secret")
@@ -90,12 +90,12 @@ public class ComponentTestConfig {
     }
 
     @Bean
-    public ClientRegistrationRepository clientRegistrationRepository() {
+    ClientRegistrationRepository clientRegistrationRepository() {
         return new InMemoryClientRegistrationRepository(clientRegistration());
     }
 
     @Bean
-    public OAuth2AuthorizedClientManager authorizedClientManager(
+    OAuth2AuthorizedClientManager authorizedClientManager(
             ClientRegistrationRepository clientRegistrationRepository,
             OAuth2AuthorizedClientService authorizedClientService) {
 

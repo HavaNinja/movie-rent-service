@@ -8,7 +8,7 @@ import com.ahaveriuc.persistence.movie.entity.MovieEntity;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ModifyMovieAdapter implements ModifyMoviePort {
+class ModifyMovieAdapter implements ModifyMoviePort {
 
     private final MovieJpaRepository movieJpaRepository;
 
